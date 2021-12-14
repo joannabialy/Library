@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Library.Application.Features.DigitalEntities.Queries.GetDigitalEntitiesList.DigitalEntitiesListVM>
+
+<style>
+    img {
+        width: 100%;
+        max-width: 200px;
+    }
+</style>
+
+<div class="row m-1">
+    <div class="col-2">
+        
+    </div>
+    <div class="col-9">
+        @await Component.InvokeAsync("FilterByCompanyAndAuthor")
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-2">
+
+        @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+        {
+            <p>Dodaj nowy element:</p>
+            <a class="btn btn-block btn-outline-dark" asp-action="Create" asp-controller="Audiobook">
+                Dodaj Audiobook
+            </a>
+            <a class="btn btn-block btn-outline-dark" asp-action="Create" asp-controller="Book">
+                Dodaj Książkę
+            </a>
+            <a class="btn btn-block btn-outline-dark" asp-action="Create" asp-controller="Film">
+                Dodaj Film
+            </a>
+            <a class="btn btn-block btn-outline-dark" asp-action="Create" asp-controller="Magazine">
+                Dodaj Magazyn
+            </a>
+        }
+    </div>
+    
+    <div class="card-columns col-9">
+
+        @foreach (var item in Model)
+        {
+            <div class="card card-outline-primary">
+                <div class="card-body text-center">
+
+                    <div class="bg-faded p-1">
+                        <h4>@item.Title</h4>
+                    </div>
+
+                    @item.Type
+
+                    @{
+                        var base64 = Convert.ToBase64String(item.Image);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    }
+
+                    <img src="@imgSrc" />
+
+                    @foreach (var tag in item.Tags)
+                    {
+
+                        <a asp-action="Index"
+                           asp-controller="DigitalEntity"
+                           asp-route-tagId="@tag.Id">@tag.Name </a>
+                    }
+
+                    <div class="m-1">
+                        <a class="btn btn-outline-info btn-sm" asp-action="Details"
+                           asp-route-id="@item.DigitalEntityId" asp-route-type="@item.Type">Szczegóły</a>
+                        @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+                        {
+                            <a class="btn btn-outline-danger btn-sm" asp-action="Delete"
+                               asp-route-id="@item.DigitalEntityId" asp-controller="@item.Type">Usuń</a>
+                            <a class="btn btn-outline-warning btn-sm" asp-action="Edit"
+                               asp-route-id="@item.DigitalEntityId" asp-controller="@item.Type">Edytuj</a>
+                        }
+                    </div>
+
+
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
