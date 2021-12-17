@@ -11,7 +11,7 @@ namespace Library.Application.ViewModels
         public byte[] Image { get; set; }
         public string Type { get; set; }
         public int CompanyId { get; set; }
-        public int PersonId{ get; set; }
+        public int PersonId { get; set; }
         public List<Tag> Tags { get; set; }
     }
 }

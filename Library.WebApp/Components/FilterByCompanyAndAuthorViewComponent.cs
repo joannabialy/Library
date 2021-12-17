@@ -1,13 +1,13 @@
-﻿using MediatR;
+﻿using Library.Application.Features.DigitalEntities.Queries.GetAuthorsAndCompaniesList;
+using Library.Application.ViewModels;
+using Library.WebApp.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using Library.Application.Features.DigitalEntities.Queries.GetAuthorsAndCompaniesList;
-using Library.WebApp.Models;
-using Library.Application.ViewModels;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Library.WebApp.Components
 {

@@ -9,7 +9,7 @@ namespace Library.Application.Profiles
         public MappingProfile()
         {
             // LIST
-            
+
             CreateMap<Audiobook, DigitalEntitiesListVM>()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(y => "Audiobook"))
                 .ForMember(dest => dest.CompanyId, opt => opt.MapFrom(y => y.CompanyId))

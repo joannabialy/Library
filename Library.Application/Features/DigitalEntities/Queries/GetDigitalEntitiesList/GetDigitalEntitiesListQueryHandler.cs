@@ -1,23 +1,21 @@
-﻿using Library.Application.Contracts.Repositories;
+﻿using AutoMapper;
+using Library.Application.Contracts.Repositories;
+using Library.Application.Features.DigitalEntities.Queries.GetAuthorsAndCompaniesList;
+using Library.Application.ViewModels;
 using MediatR;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
 using System.Threading;
-using Library.Application.ViewModels;
-using Library.Application.Features.DigitalEntities.Queries.GetAuthorsAndCompaniesList;
+using System.Threading.Tasks;
 
 namespace Library.Application.Features.DigitalEntities.Queries.GetDigitalEntitiesList
 {
     public class GetDigitalEntitiesListQueryHandler : HandlerBase, IRequestHandler<GetDigitalEntitiesListQuery, List<DigitalEntitiesListVM>>
     {
-        public GetDigitalEntitiesListQueryHandler(IAudiobooksRepository audiobooksRepository, 
-            IBooksRepository booksRepository, 
-            IMagazinesRepository magazinesRepository, 
-            IFilmsRepository filmsRepository, 
+        public GetDigitalEntitiesListQueryHandler(IAudiobooksRepository audiobooksRepository,
+            IBooksRepository booksRepository,
+            IMagazinesRepository magazinesRepository,
+            IFilmsRepository filmsRepository,
             IMapper mapper)
             : base(audiobooksRepository, booksRepository, magazinesRepository, filmsRepository, mapper)
         {

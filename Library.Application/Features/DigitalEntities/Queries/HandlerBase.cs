@@ -11,10 +11,10 @@ namespace Library.Application.Features.DigitalEntities.Queries.GetAuthorsAndComp
         protected readonly IFilmsRepository _filmsRepository;
         protected readonly IMapper _mapper;
 
-        protected HandlerBase(IAudiobooksRepository audiobooksRepository, 
-            IBooksRepository booksRepository, 
-            IMagazinesRepository magazinesRepository, 
-            IFilmsRepository filmsRepository, 
+        protected HandlerBase(IAudiobooksRepository audiobooksRepository,
+            IBooksRepository booksRepository,
+            IMagazinesRepository magazinesRepository,
+            IFilmsRepository filmsRepository,
             IMapper mapper)
         {
             _audiobooksRepository = audiobooksRepository;

@@ -3,14 +3,8 @@ using Library.Application.Contracts.Repositories;
 using Library.Application.ViewModels;
 using Library.Domain.Common;
 using Library.Domain.Entities;
-using MediatR;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Library.Application.Features.DigitalEntities.Commands
@@ -28,13 +22,13 @@ namespace Library.Application.Features.DigitalEntities.Commands
 
         private readonly IMapper _mapper;
 
-        protected UpdateCreateHandlerBase(IPersonsRepository personsRepository, 
-            ICompaniesRepository companiesRepository, 
-            ITagsRepository tagsRepository, 
-            IAsyncDomainRepository<Audiobook> audiobooksRepository, 
-            IAsyncDomainRepository<Book> booksRepository, 
-            IAsyncDomainRepository<Film> filmsRepository, 
-            IAsyncDomainRepository<Magazine> magazinesRepository, 
+        protected UpdateCreateHandlerBase(IPersonsRepository personsRepository,
+            ICompaniesRepository companiesRepository,
+            ITagsRepository tagsRepository,
+            IAsyncDomainRepository<Audiobook> audiobooksRepository,
+            IAsyncDomainRepository<Book> booksRepository,
+            IAsyncDomainRepository<Film> filmsRepository,
+            IAsyncDomainRepository<Magazine> magazinesRepository,
             IMapper mapper)
         {
             _personsRepository = personsRepository;
@@ -84,7 +78,7 @@ namespace Library.Application.Features.DigitalEntities.Commands
 
         private async Task UpdateCompany<T>(string name, T entity) where T : DigitalEntity
         {
-            entity.Company =  await _companiesRepository.GetByName(name) ?? new Company()
+            entity.Company = await _companiesRepository.GetByName(name) ?? new Company()
             {
                 Name = name
             };

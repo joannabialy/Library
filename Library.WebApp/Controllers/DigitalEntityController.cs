@@ -1,7 +1,6 @@
 ﻿using Library.Application.Features.DigitalEntities.Queries.GetDigitalEntitiesList;
 using Library.Application.ViewModels;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,7 +12,6 @@ namespace Library.WebApp.Controllers
     public class DigitalEntityController : Controller
     {
         private readonly IMediator _mediator;
-        private string _previosType;
 
         public DigitalEntityController(IMediator mediator)
         {
@@ -41,7 +39,7 @@ namespace Library.WebApp.Controllers
             }
             else
             {
-                filteredDtos = dtos.Where(e => e.Type == type || type == null).ToList();             
+                filteredDtos = dtos.Where(e => e.Type == type || type == null).ToList();
             }
 
             ViewBag.SelectedType = type;

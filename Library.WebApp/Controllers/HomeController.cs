@@ -1,10 +1,7 @@
-﻿using Library.Application.Features.DigitalEntities.Queries.GetDigitalEntitiesList;
-using Library.WebApp.Models;
-using MediatR;
+﻿using Library.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace Library.WebApp.Controllers
 {

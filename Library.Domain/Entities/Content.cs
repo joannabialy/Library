@@ -1,5 +1,4 @@
 ﻿using Library.Domain.Common;
-using System;
 
 namespace Library.Domain.Entities
 {

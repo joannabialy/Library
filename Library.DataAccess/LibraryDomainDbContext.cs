@@ -1,10 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-
+﻿using Library.DataAccess.Utils;
 using Library.Domain.Common;
 using Library.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
-using Library.DataAccess.Utils;
-using System.Collections.Generic;
 
 namespace Library.DataAccess
 {

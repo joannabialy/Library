@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-
-using Library.Domain.Entities;
+﻿using Library.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Library.Domain.Common
 {

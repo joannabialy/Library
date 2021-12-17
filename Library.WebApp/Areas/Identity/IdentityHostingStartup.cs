@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Library.DataAccess;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-
-using Library.DataAccess;
 
 [assembly: HostingStartup(typeof(Library.WebApp.Areas.Identity.IdentityHostingStartup))]
 namespace Library.WebApp.Areas.Identity
@@ -11,7 +10,8 @@ namespace Library.WebApp.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
+            builder.ConfigureServices((context, services) =>
+            {
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddRoles<IdentityRole>()

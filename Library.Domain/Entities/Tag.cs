@@ -1,5 +1,4 @@
 ﻿using Library.Domain.Common;
-using System;
 using System.Collections.Generic;
 
 namespace Library.Domain.Entities
