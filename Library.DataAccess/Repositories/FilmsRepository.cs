@@ -15,6 +15,24 @@ namespace Library.DataAccess.Repositories
         {
         }
 
+        public async Task<List<Company>> GetCompanies()
+        {
+            return await _dbContext.Set<Film>()
+                .Include(x => x.Company)
+                .Select(x => x.Company)
+                .Distinct()
+                .ToListAsync();
+        }
+
+        public async Task<List<Person>> GetDirectors()
+        {
+            return await _dbContext.Set<Film>()
+                .Include(x => x.Director)
+                .Select(x => x.Director)
+                .Distinct()
+                .ToListAsync();
+        }
+
         public async Task<Film> GetFilm(int id)
         {
             return await _dbContext.Set<Film>()

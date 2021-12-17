@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Library.Application.Features.Magazines.Queries.GetMagazineDetails;
-using Library.Application.Features.Magazines.Commands.CreateMagazine;
-using Library.Application.Features.Magazines.Commands.UpdateMagazine;
-using Library.Application.Features.Magazines.Commands.DeleteMagazine;
+using Library.Application.Features.DigitalEntities.Commands.DeleteDigitalEntity;
+using Library.Application.Features.DigitalEntities.Commands.CreateDigitalEntity;
+using Library.Application.Features.DigitalEntities.Commands.UpdateDigitalEntity;
 
 namespace Library.WebApp.Controllers
 {
@@ -47,24 +47,24 @@ namespace Library.WebApp.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> EditAsync(MagazineDto magazineDto)
+        public async Task<IActionResult> EditAsync(DigitalEntityDto magazineDto)
         {
             if (ModelState.IsValid)
             {
                 if (magazineDto.DigitalEntityId == 0)
                 {
-                    var command = new CreateMagazineCommand
+                    var command = new CreateDigitalEntityCommand
                     {
-                        MagazineDto = magazineDto
+                        DigitalEntityDto = magazineDto
                     };
 
                     await _mediator.Send(command);
                 }
                 else
                 {
-                    var command = new UpdateMagazineCommand
+                    var command = new UpdateDigitalEntityCommand
                     {
-                        MagazineDto = magazineDto
+                        DigitalEntityDto = magazineDto
                     };
 
                     await _mediator.Send(command);
@@ -87,7 +87,7 @@ namespace Library.WebApp.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            var command = new DeleteMagazineCommand
+            var command = new DeleteDigitalEntityCommand
             {
                 Id = id
             };

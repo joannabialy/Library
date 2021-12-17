@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
-using Library.Application.Features.Audiobooks.Commands.CreateAudiobook;
-using Library.Application.Features.Audiobooks.Commands.DeleteAudiobook;
-using Library.Application.Features.Audiobooks.Commands.UpdateAudiobook;
 using Library.Application.Features.Audiobooks.Queries.GetAudiobookDetails;
+using Library.Application.Features.DigitalEntities.Commands.CreateDigitalEntity;
+using Library.Application.Features.DigitalEntities.Commands.DeleteDigitalEntity;
+using Library.Application.Features.DigitalEntities.Commands.UpdateDigitalEntity;
 using Library.Application.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -45,7 +44,7 @@ namespace Library.WebApp.Controllers
             };
 
             var audiobook = await _mediator.Send(query);
-            var audiobookDto = _mapper.Map<AudiobookDto>(audiobook);
+            var audiobookDto = _mapper.Map<DigitalEntityDto>(audiobook);
 
             audiobookDto.Tags = string.Join(",", audiobook.Tags.Select(x => x.Name));
 
@@ -54,24 +53,24 @@ namespace Library.WebApp.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> EditAsync(AudiobookDto audiobookDto)
+        public async Task<IActionResult> EditAsync(DigitalEntityDto audiobookDto)
         {
             if (ModelState.IsValid)
             {
                 if (audiobookDto.DigitalEntityId == 0)
                 {
-                    var command = new CreateAudiobookCommand
+                    var command = new CreateDigitalEntityCommand
                     {
-                        AudiobookDto = audiobookDto
+                        DigitalEntityDto = audiobookDto
                     };
 
                     await _mediator.Send(command);
                 }
                 else
                 {
-                    var command = new UpdateAudiobookCommand
+                    var command = new UpdateDigitalEntityCommand
                     {
-                        AudiobookDto = audiobookDto
+                        DigitalEntityDto = audiobookDto
                     };
 
                     await _mediator.Send(command);
@@ -89,13 +88,13 @@ namespace Library.WebApp.Controllers
         [Authorize(Roles = "Admin")]
         public ViewResult Create()
         {
-            return View("Edit", new AudiobookDto());
+            return View("Edit", new DigitalEntityDto() {Type = "Audiobook"});
         }
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            var command = new DeleteAudiobookCommand
+            var command = new DeleteDigitalEntityCommand
             {
                 Id = id
             };

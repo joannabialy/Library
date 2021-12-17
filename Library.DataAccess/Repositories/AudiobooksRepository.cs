@@ -42,5 +42,23 @@ namespace Library.DataAccess.Repositories
 
             return audiobooks;
         }
+
+        public async Task<List<Person>> GetAuthors()
+        {
+            return await _dbContext.Set<Audiobook>()
+                .Include(x => x.Author)
+                .Select(x => x.Author)
+                .Distinct()
+                .ToListAsync();
+        }
+
+        public async Task<List<Company>> GetCompanies()
+        {
+            return await _dbContext.Set<Audiobook>()
+                .Include(x => x.Company)
+                .Select(x => x.Company)
+                .Distinct()
+                .ToListAsync();
+        }
     }
 }

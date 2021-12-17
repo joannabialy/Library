@@ -12,5 +12,7 @@ namespace Library.Application.Contracts.Repositories
         Task<List<Audiobook>> GetAudiobooksWithAuthorsAndCompanies();
         Task<List<Audiobook>> GetAudiobooksWithTags();
         Task<Audiobook> GetAudiobook(int id);
+        Task<List<Person>> GetAuthors();
+        Task<List<Company>> GetCompanies();
     }
 }

@@ -1,6 +1,6 @@
-﻿using Library.Application.Features.Films.Commands.CreateFilm;
-using Library.Application.Features.Films.Commands.DeleteFilm;
-using Library.Application.Features.Films.Commands.UpdateFilm;
+﻿using Library.Application.Features.DigitalEntities.Commands.CreateDigitalEntity;
+using Library.Application.Features.DigitalEntities.Commands.DeleteDigitalEntity;
+using Library.Application.Features.DigitalEntities.Commands.UpdateDigitalEntity;
 using Library.Application.Features.Films.Queries.GetFilmDetails;
 using Library.Application.ViewModels;
 using MediatR;
@@ -46,24 +46,24 @@ namespace Library.WebApp.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> EditAsync(FilmDto filmDto)
+        public async Task<IActionResult> EditAsync(DigitalEntityDto filmDto)
         {
             if (ModelState.IsValid)
             {
                 if (filmDto.DigitalEntityId == 0)
                 {
-                    var command = new CreateFilmCommand
+                    var command = new CreateDigitalEntityCommand
                     {
-                        FilmDto = filmDto
+                        DigitalEntityDto = filmDto
                     };
 
                     await _mediator.Send(command);
                 }
                 else
                 {
-                    var command = new UpdateFilmCommand
+                    var command = new UpdateDigitalEntityCommand
                     {
-                        FilmDto = filmDto
+                        DigitalEntityDto = filmDto
                     };
 
                     await _mediator.Send(command);
@@ -86,7 +86,7 @@ namespace Library.WebApp.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            var command = new DeleteFilmCommand
+            var command = new DeleteDigitalEntityCommand
             {
                 Id = id
             };

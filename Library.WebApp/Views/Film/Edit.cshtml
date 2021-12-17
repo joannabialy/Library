@@ -1,4 +1,4 @@
-﻿@model FilmDto
+﻿@model DigitalEntityDto
 
 <form asp-action="Edit" method="post" enctype="multipart/form-data">
     <input type="hidden" asp-for="DigitalEntityId" />
@@ -14,18 +14,18 @@
     <hr />
     <b>Autor</b>:
     <div class="form-group row">
-        <label asp-for="DirectorFirstName" class="col-sm-2 col-form-label">Imię:</label>
-        <div><span asp-validation-for="DirectorFirstName" class="text-danger"></span></div>
+        <label asp-for="PersonFirstName" class="col-sm-2 col-form-label">Imię:</label>
+        <div><span asp-validation-for="PersonFirstName" class="text-danger"></span></div>
         <div class="col-sm-10">
-            <input asp-for="DirectorFirstName" class="form-control" />
+            <input asp-for="PersonFirstName" class="form-control" />
         </div>
     </div>
 
     <div class="form-group row">
-        <label asp-for="DirectorFirstName" class="col-sm-2 col-form-label">Nazwisko:</label>
-        <div><span asp-validation-for="DirectorFirstName" class="text-danger"></span></div>
+        <label asp-for="PersonLastName" class="col-sm-2 col-form-label">Nazwisko:</label>
+        <div><span asp-validation-for="PersonLastName" class="text-danger"></span></div>
         <div class="col-sm-10">
-            <input asp-for="DirectorFirstName" class="form-control" />
+            <input asp-for="PersonLastName" class="form-control" />
         </div>
     </div>
 
@@ -56,10 +56,10 @@
     </div>
 
     <div class="form-group row">
-        <label asp-for="PremiereDate" class="col-sm-2 col-form-label"><b>Data wydania:</b></label>
-        <div><span asp-validation-for="PremiereDate" class="text-danger"></span></div>
+        <label asp-for="Date" class="col-sm-2 col-form-label"><b>Data wydania:</b></label>
+        <div><span asp-validation-for="Date" class="text-danger"></span></div>
         <div class="col-sm-10">
-            <input asp-for="PremiereDate" class="form-control" />
+            <input asp-for="Date" class="form-control" />
         </div>
     </div>
 

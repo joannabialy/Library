@@ -12,5 +12,7 @@ namespace Library.Application.Contracts.Repositories
         Task<Film> GetFilm(int id);
         Task<List<Film>> GetFilmsWithDirectorsAndCompanies();
         Task<List<Film>> GetFilmsWithTags();
+        Task<List<Person>> GetDirectors();
+        Task<List<Company>> GetCompanies();
     }
 }

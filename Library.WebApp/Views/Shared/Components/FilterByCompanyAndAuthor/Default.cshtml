@@ -1,10 +1,11 @@
-﻿@model PersonsAndCompaniesSelectListVM
+﻿@model FilterVM
 
 @if (ViewBag.SelectedType == null)
 {
     using (Html.BeginForm())
     {
         <text>Typ: </text>@Html.DropDownList("type", Model.Types, "--"); <text>&nbsp;</text>
+        @Html.Hidden("previousType", Model.PreviousType, null);
         <input type="submit" value="Filtruj" />
     }
 }
@@ -16,6 +17,7 @@
         <text>Typ: </text>@Html.DropDownList("type", Model.Types, "--"); <text>&nbsp;</text>
         <text>Autor: </text>@Html.DropDownList("authorId", Model.Persons, "--"); <text>&nbsp;</text>
         <text>Wydawnictwo: </text>@Html.DropDownList("companyId", Model.Companies, "--");<text>&nbsp;</text>
+        @Html.Hidden("previousType", Model.PreviousType, null);
         <input type="submit" value="Filtruj" />
     }
 }
@@ -26,6 +28,7 @@
         <text>Typ: </text>@Html.DropDownList("type", Model.Types, "--"); <text>&nbsp;</text>
         <text>Reżyser: </text>@Html.DropDownList("authorId", Model.Persons, "--");<text>&nbsp;</text>
         <text> Wytwórnia: </text>@Html.DropDownList("companyId", Model.Companies, "--");<text>&nbsp;</text>
+        @Html.Hidden("previousType", Model.PreviousType, null);
         <input type="submit" value="Filtruj" />
     }
 }
@@ -35,6 +38,7 @@
     {
         <text>Typ: </text>@Html.DropDownList("type", Model.Types, "--"); <text>&nbsp;</text>
         <text>Wydawnictwo: </text>@Html.DropDownList("companyId", Model.Persons, "--");<text>&nbsp;</text>
+        @Html.Hidden("previousType", Model.PreviousType, null);
         <input type="submit" value="Filtruj" />
     }
 }

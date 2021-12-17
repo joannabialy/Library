@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
-using Library.Application.Features.DigitalEntities.Queries.GetDigitalEntitiesList;
 using Library.Application.ViewModels;
-using Library.Domain.Common;
 using Library.Domain.Entities;
-using System.Linq;
 
 namespace Library.Application.Profiles
 {
@@ -11,6 +8,8 @@ namespace Library.Application.Profiles
     {
         public MappingProfile()
         {
+            // LIST
+            
             CreateMap<Audiobook, DigitalEntitiesListVM>()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(y => "Audiobook"))
                 .ForMember(dest => dest.CompanyId, opt => opt.MapFrom(y => y.CompanyId))
@@ -31,21 +30,39 @@ namespace Library.Application.Profiles
                 .ForMember(dest => dest.CompanyId, opt => opt.MapFrom(y => y.CompanyId))
                 .ForMember(dest => dest.PersonId, opt => opt.MapFrom(y => y.DirectorId));
 
-            CreateMap<AudiobookDto, Audiobook>()
-                .ForMember(dest => dest.Tags, opt => opt.Ignore())
-                .ReverseMap();
+            // DETAILS
 
-            CreateMap<BookDto, Book>()
-                .ForMember(dest => dest.Tags, opt => opt.Ignore())
-                .ReverseMap();
+            CreateMap<Audiobook, DigitalEntityDto>()
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(y => y.PublicationDate))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(y => "Audiobook"))
+                .ForMember(dest => dest.Tags, opt => opt.Ignore());
 
-            CreateMap<FilmDto, Film>()
-                .ForMember(dest => dest.Tags, opt => opt.Ignore())
-                .ReverseMap();
+            CreateMap<DigitalEntityDto, Audiobook>()
+                .ForMember(dest => dest.PublicationDate, opt => opt.MapFrom(y => y.Date))
+                .ForMember(dest => dest.Tags, opt => opt.Ignore());
 
-            CreateMap<MagazineDto, Magazine>()
+            CreateMap<Book, DigitalEntityDto>()
                 .ForMember(dest => dest.Tags, opt => opt.Ignore())
-                .ReverseMap();
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(y => "Book"))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(y => y.PublicationDate));
+
+            CreateMap<DigitalEntityDto, Book>()
+                .ForMember(dest => dest.PublicationDate, opt => opt.MapFrom(y => y.Date))
+                .ForMember(dest => dest.Tags, opt => opt.Ignore());
+
+            CreateMap<Film, DigitalEntityDto>()
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(y => y.PremiereDate))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(y => "Film"))
+                .ForMember(dest => dest.Tags, opt => opt.Ignore());
+
+            CreateMap<DigitalEntityDto, Film>()
+                .ForMember(dest => dest.PremiereDate, opt => opt.MapFrom(y => y.Date))
+                .ForMember(dest => dest.Tags, opt => opt.Ignore());
+
+            CreateMap<Magazine, DigitalEntityDto>()
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(y => y.Issue))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(y => "Magazine"))
+                .ForMember(dest => dest.Tags, opt => opt.Ignore());
         }
     }
 }

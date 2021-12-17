@@ -12,5 +12,7 @@ namespace Library.Application.Contracts.Repositories
         Task<Book> GetBook(int id);
         Task<List<Book>> GetBooksWithAuthorsAndCompanies();
         Task<List<Book>> GetBooksWithTags();
+        Task<List<Person>> GetAuthors();
+        Task<List<Company>> GetCompanies();
     }
 }

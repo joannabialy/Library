@@ -1,11 +1,13 @@
-﻿using Library.Application.Features.Books.Commands.CreateBook;
-using Library.Application.Features.Books.Commands.DeleteBook;
-using Library.Application.Features.Books.Commands.UpdateBook;
+﻿using AutoMapper;
 using Library.Application.Features.Books.Queries.GetBookDetails;
+using Library.Application.Features.DigitalEntities.Commands.CreateDigitalEntity;
+using Library.Application.Features.DigitalEntities.Commands.DeleteDigitalEntity;
+using Library.Application.Features.DigitalEntities.Commands.UpdateDigitalEntity;
 using Library.Application.ViewModels;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Library.WebApp.Controllers
@@ -13,10 +15,12 @@ namespace Library.WebApp.Controllers
     public class BookController : Controller
     {
         private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public BookController(IMediator mediator)
+        public BookController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index(int id)
@@ -40,30 +44,32 @@ namespace Library.WebApp.Controllers
             };
 
             var book = await _mediator.Send(query);
+            var bookDto = _mapper.Map<DigitalEntityDto>(book);
+            bookDto.Tags = string.Join(",", book.Tags.Select(x => x.Name));
 
-            return View(book);
+            return View(bookDto);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> EditAsync(BookDto bookDto)
+        public async Task<IActionResult> EditAsync(DigitalEntityDto bookDto)
         {
             if (ModelState.IsValid)
             {
                 if (bookDto.DigitalEntityId == 0)
                 {
-                    var command = new CreateBookCommand
+                    var command = new CreateDigitalEntityCommand
                     {
-                        BookDto = bookDto
+                        DigitalEntityDto = bookDto
                     };
 
                     await _mediator.Send(command);
                 }
                 else
                 {
-                    var command = new UpdateBookCommand
+                    var command = new UpdateDigitalEntityCommand
                     {
-                        BookDto = bookDto
+                        DigitalEntityDto = bookDto
                     };
 
                     await _mediator.Send(command);
@@ -86,7 +92,7 @@ namespace Library.WebApp.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            var command = new DeleteBookCommand
+            var command = new DeleteDigitalEntityCommand
             {
                 Id = id
             };

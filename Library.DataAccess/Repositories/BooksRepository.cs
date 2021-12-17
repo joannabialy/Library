@@ -15,6 +15,15 @@ namespace Library.DataAccess.Repositories
         {
         }
 
+        public async Task<List<Person>> GetAuthors()
+        {
+            return (await _dbContext.Set<Book>()
+                .Include(x => x.Author)
+                .Select(x => x.Author)
+                .Distinct()
+                .ToListAsync());
+        }
+
         public async Task<Book> GetBook(int id)
         {
             return await _dbContext.Set<Book>()
@@ -41,6 +50,15 @@ namespace Library.DataAccess.Repositories
                 .ToListAsync();
 
             return books;
+        }
+
+        public async Task<List<Company>> GetCompanies()
+        {
+            return (await _dbContext.Set<Book>()
+                .Include(x => x.Company)
+                .Select(x => x.Company)
+                .Distinct()
+                .ToListAsync());
         }
     }
 }

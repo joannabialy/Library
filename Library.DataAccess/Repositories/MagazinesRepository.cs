@@ -15,6 +15,15 @@ namespace Library.DataAccess.Repositories
         {
         }
 
+        public async Task<List<Company>> GetCompanies()
+        {
+            return await _dbContext.Set<Magazine>()
+                .Include(x => x.Company)
+                .Select(x => x.Company)
+                .Distinct()
+                .ToListAsync();
+        }
+
         public async Task<Magazine> GetMagazine(int id)
         {
             return await _dbContext.Set<Magazine>()
