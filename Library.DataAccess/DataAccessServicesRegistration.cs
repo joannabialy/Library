@@ -22,6 +22,7 @@ namespace Library.DataAccess
             services.AddScoped(typeof(IMagazinesRepository), typeof(MagazinesRepository));
             services.AddScoped(typeof(IBooksRepository), typeof(BooksRepository));
             services.AddScoped(typeof(IFilmsRepository), typeof(FilmsRepository));
+
             services.AddScoped(typeof(IPersonsRepository), typeof(PersonsRepository));
             services.AddScoped(typeof(ICompaniesRepository), typeof(CompaniesRepository));
             services.AddScoped(typeof(ITagsRepository), typeof(TagsRepository));

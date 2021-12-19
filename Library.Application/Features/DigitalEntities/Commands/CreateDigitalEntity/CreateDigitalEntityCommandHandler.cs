@@ -10,8 +10,7 @@ namespace Library.Application.Features.DigitalEntities.Commands.CreateDigitalEnt
 {
     public class CreateDigitalEntityCommandHandler : UpdateCreateHandlerBase, IRequestHandler<CreateDigitalEntityCommand, int>
     {
-
-        protected CreateDigitalEntityCommandHandler(IPersonsRepository personsRepository,
+        public CreateDigitalEntityCommandHandler(IPersonsRepository personsRepository,
             ICompaniesRepository companiesRepository,
             ITagsRepository tagsRepository,
             IAsyncDomainRepository<Audiobook> audiobooksRepository,

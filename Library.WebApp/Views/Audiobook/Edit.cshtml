@@ -4,30 +4,36 @@
     <input type="hidden" asp-for="DigitalEntityId" />
     <input type="hidden" asp-for="Type" />
 
-    <div class="form-group row">
-        <label asp-for="Title" class="col-sm-2 col-form-label"><b>Tytuł:</b></label>
-        <div><span asp-validation-for="Title" class="text-danger"></span></div>
-        <div class="col-sm-10">
-            <input asp-for="Title" class="form-control" />
+    <div class="form-group">
+        <div class="row">
+            <label asp-for="Title" class="col-sm-2 col-form-label"><b>Tytuł:</b></label>
+            <div class="col-sm-10">
+                <input asp-for="Title" class="form-control" />
+            </div>
         </div>
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
     <hr />
     <b>Autor</b>:
-    <div class="form-group row">
-        <label asp-for="PersonFirstName" class="col-sm-2 col-form-label">Imię:</label>
-        <div><span asp-validation-for="PersonFirstName" class="text-danger"></span></div>
-        <div class="col-sm-10">
-            <input asp-for="PersonFirstName" class="form-control" />
+    <div class="form-group">
+        <div class="row">   
+            <label asp-for="PersonFirstName" class="col-sm-2 col-form-label">Imię:</label>
+            <div class="col-sm-10">
+                <input asp-for="PersonFirstName" class="form-control" />
+            </div>
         </div>
+        <span asp-validation-for="PersonFirstName" class="text-danger"></span>
     </div>
 
-    <div class="form-group row">
-        <label asp-for="PersonLastName" class="col-sm-2 col-form-label">Nazwisko:</label>
-        <div><span asp-validation-for="PersonLastName" class="text-danger"></span></div>
-        <div class="col-sm-10">
-            <input asp-for="PersonLastName" class="form-control" />
+    <div class="form-group">
+        <div class="row">
+            <label asp-for="PersonLastName" class="col-sm-2 col-form-label">Nazwisko:</label>
+            <div class="col-sm-10">
+                <input asp-for="PersonLastName" class="form-control" />
+            </div>
         </div>
+        <span asp-validation-for="PersonLastName" class="text-danger"></span>
     </div>
 
     <hr />
@@ -40,20 +46,24 @@
         </div>
     </div>
 
-    <div class="form-group row">
-        <label asp-for="CompanyName" class="col-sm-2 col-form-label"><b>Wydawnictwo:</b></label>
-        <div><span asp-validation-for="CompanyName" class="text-danger"></span></div>
-        <div class="col-sm-10">
-            <input asp-for="CompanyName" class="form-control" />
+    <div class="form-group">
+        <div class="row">
+            <label asp-for="CompanyName" class="col-sm-2 col-form-label"><b>Wydawnictwo:</b></label>
+            <div class="col-sm-10">
+                <input asp-for="CompanyName" class="form-control" />
+            </div>
         </div>
+        <span asp-validation-for="CompanyName" class="text-danger"></span>
     </div>
 
-    <div class="form-group row">
-        <label asp-for="Length" class="col-sm-2 col-form-label"><b>Długość (min):</b></label>
-        <div><span asp-validation-for="Length" class="text-danger"></span></div>
-        <div class="col-sm-10">
-            <input asp-for="Length" class="form-control" />
+    <div class="form-group">
+        <div class="row">
+            <label asp-for="Length" class="col-sm-2 col-form-label"><b>Długość (min):</b></label>
+            <div class="col-sm-10">
+                <input asp-for="Length" class="form-control" />
+            </div>
         </div>
+        <span asp-validation-for="Length" class="text-danger"></span>
     </div>
 
     <div class="form-group row">

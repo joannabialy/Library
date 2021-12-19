@@ -22,7 +22,6 @@ namespace Library.WebApp.Controllers
             _mapper = mapper;
         }
 
-
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> EditAsync(DigitalEntityDto dto)

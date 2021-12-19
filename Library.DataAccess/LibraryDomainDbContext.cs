@@ -60,15 +60,8 @@ namespace Library.DataAccess
             modelBuilder.Entity<Person>().HasData(new Person()
             {
                 Id = 1,
-                FirstName = "Joanna",
-                LastName = "Bialy"
-            });
-
-            modelBuilder.Entity<Person>().HasData(new Person()
-            {
-                Id = 2,
-                FirstName = "Piotr",
-                LastName = "Bialy"
+                FirstName = "J.K.",
+                LastName = "Rowling"
             });
 
             modelBuilder.Entity<Tag>().HasData(new Tag()
@@ -111,7 +104,7 @@ namespace Library.DataAccess
             modelBuilder.Entity<Company>().HasData(new Company()
             {
                 Id = 2,
-                Name = "Pottermore 2"
+                Name = "Media Rodzina"
             });
 
             modelBuilder.Entity<Audiobook>().HasData(new Audiobook

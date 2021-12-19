@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Library.Application.Features.DigitalEntities.Commands.UpdateDigitalEntity
 {
-    class UpdateDigitalEntityCommandHandler : UpdateCreateHandlerBase, IRequestHandler<UpdateDigitalEntityCommand, int>
+    public class UpdateDigitalEntityCommandHandler : UpdateCreateHandlerBase, IRequestHandler<UpdateDigitalEntityCommand, int>
     {
 
-        protected UpdateDigitalEntityCommandHandler(IPersonsRepository personsRepository,
+        public UpdateDigitalEntityCommandHandler(IPersonsRepository personsRepository,
             ICompaniesRepository companiesRepository,
             ITagsRepository tagsRepository,
             IAsyncDomainRepository<Audiobook> audiobooksRepository,

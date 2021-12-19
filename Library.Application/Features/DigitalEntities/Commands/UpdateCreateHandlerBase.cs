@@ -95,11 +95,14 @@ namespace Library.Application.Features.DigitalEntities.Commands
 
         private async Task UpdateImage<T>(IFormFile formFile, T entity) where T : DigitalEntity
         {
-            using (var memoryStream = new MemoryStream())
+            if (formFile != null)
             {
-                await formFile.CopyToAsync(memoryStream);
+                using (var memoryStream = new MemoryStream())
+                {
+                    await formFile.CopyToAsync(memoryStream);
 
-                entity.Image = memoryStream.ToArray();
+                    entity.Image = memoryStream.ToArray();
+                }
             }
         }
     }
