@@ -121,7 +121,7 @@ namespace Library.DataAccess
 
             modelBuilder.Entity<Book>().HasData(new Book
             {
-                AuthorId = 2,
+                AuthorId = 1,
                 PublicationDate = new DateTime(2020, 1, 2),
                 Title = "Harry Potter i Komnata Tajemnic",
                 Description = "Avdds",
